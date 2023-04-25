@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
-import ManufacturersList from './ManufacterersList';
+import ManufacturersList from './ManufacturersList';
+import AutomobileList from './AutomobileList';
 import Nav from './Nav';
 import ManuForm from './ManuForm';
 
@@ -15,10 +16,12 @@ function App(props) {
           <Route path = "manuform">
             <Route path="new" element={<ManuForm />} />
           </Route>
-          <Route path="list" element={<ManufacturersList />} />
-          {/* <Route path="createModel" element={<createModel />} /> */}
-          {/* <Route path="showInventory" element={<showInventory />} /> */}
-          {/* <Route path="createCar" element={<createCar />} /> */}
+            <Route path="list">
+            <Route path = "Manufacturers" element={<ManufacturersList />} />
+              </Route>
+            <Route path = "list">
+              <Route path = "Automobiles" element={<AutomobileList />} />
+            </Route>
         </Routes>
       </div>
     </BrowserRouter>
