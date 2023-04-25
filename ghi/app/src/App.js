@@ -4,6 +4,7 @@ import ManufacturersList from './ManufacturersList';
 import AutomobileList from './AutomobileList';
 import Nav from './Nav';
 import ManuForm from './ManuForm';
+import ModelForm from './ModelForm';
 
 function App(props) {
   return (
@@ -12,9 +13,12 @@ function App(props) {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          {/* <Route path="Manufacturers" element={<Manufacturers />} /> */}
-          <Route path = "manuform">
-            <Route path="new" element={<ManuForm />} />
+          <Route path="new">
+            <Route path="manufacturer" element={<ManuForm />} />
+            <Route path="model" element={<ModelForm />} />
+          </Route>
+          <Route path="list">
+            <Route path="manufacturers" element={<ManufacturersList />} />
           </Route>
             <Route path="list">
             <Route path = "Manufacturers" element={<ManufacturersList />} />

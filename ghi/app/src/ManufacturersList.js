@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 
 function ManufacturersList() {
     const [manufacturers, setManufacturers] = useState([]);
-
     useEffect(() => {
         const fetchData = async () => {
             const url = 'http://localhost:8100/api/manufacturers'
@@ -16,7 +15,6 @@ function ManufacturersList() {
         }
         fetchData();
     }, []);
-
 
     return (
         <table className="table table-striped">
@@ -35,12 +33,7 @@ function ManufacturersList() {
                 })}
             </tbody>
         </table>
-
     )
-
-
-
-
 }
 
 export default ManufacturersList;
