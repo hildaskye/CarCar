@@ -3,6 +3,7 @@ import MainPage from './MainPage';
 import ManufacturersList from './ManufacturersList';
 import Nav from './Nav';
 import ManuForm from './ManuForm';
+import ModelForm from './ModelForm';
 
 function App(props) {
   return (
@@ -11,11 +12,12 @@ function App(props) {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          <Route path = "new">
-            <Route path="Manufacturer" element={<ManuForm />} />
+          <Route path="new">
+            <Route path="manufacturer" element={<ManuForm />} />
+            <Route path="model" element={<ModelForm />} />
           </Route>
           <Route path="list">
-            <Route path = "Manufacturers" element={<ManufacturersList />} />
+            <Route path="manufacturers" element={<ManufacturersList />} />
           </Route>
         </Routes>
       </div>

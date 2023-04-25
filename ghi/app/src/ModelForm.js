@@ -4,33 +4,21 @@ function ModelForm() {
     const [manufacturers, setManufacturers] = useState([]);
     const [modelName, setModelName] = useState('');
     const [pictureUrl, setPictureUrl] = useState('');
-    const [manufacturer, setManufacturer] = useState('');
+    const [manufacturer_id, setManufacturer] = useState('');
 
 
-    const handleModelNameChange = (event) => {
-        const value = event.target.value;
-        setModelName(value);
-    }
+    const handleModelNameChange = (event) => {setModelName(event.target.value)};
+    const handlePictureUrlChange = (event) => {setPictureUrl(event.target.value)};
+    const handleManufacturerChange = (event) => {setManufacturer(event.target.value)};
 
-    const handlePictureUrlChange = (event) => {
-        const value = event.target.value;
-        setPictureUrl(value);
-    }
-
-    const handleManufacturerChange = (event) => {
-        const value = event.target.value;
-        setManufacturer(value);
-    }
-
-    const handleSubmit = async (event) => {
+    const handleSend = async (event) => {
         event.preventDefault();
         const data = {};
         data.name = modelName;
         data.picture_url = pictureUrl;
-        data.manufacturer = manufacturer;
-        console.log(data);
+        data.manufacturer_id = manufacturer_id;
 
-        const ManufacturerUrl = 'http://localhost:8100/api/manufacturers/';
+        const ModelUrl = 'http://localhost:8100/api/models/';
         const fetchConfig = {
             method: "post",
             body: JSON.stringify(data),
@@ -39,72 +27,59 @@ function ModelForm() {
             },
         };
 
-        const response = await fetch(ManufacturerUrl, fetchConfig);
+        const response = await fetch(ModelUrl, fetchConfig);
         if (response.ok) {
-            const newShoe = await response.json();
-            console.log(newShoe);
-
             setModelName('');
             setPictureUrl('');
             setManufacturer('');
         }
-      }
+    }
 
-      const fetchData = async () => {
-        const url = 'http://localhost:8100/api/manufacturers/';
-
-        const response = await fetch(url);
+    const fetchData = async () => {
+        const response = await fetch('http://localhost:8100/api/manufacturers/');
 
         if (response.ok) {
-          const data = await response.json();
-          setManufacturers(data.manufacturers);
+            const data = await response.json();
+            setManufacturers(data.manufacturers);
         }
-      }
+    }
 
-      useEffect(() => {
+    useEffect(() => {
         fetchData();
-      }, []);
+    }, []);
 
-      return (
+    return (
         <div className="row">
-          <div className="offset-3 col-6">
-            <div className="shadow p-4 mt-4">
-              <h1>Add a shoe!</h1>
-              <form onSubmit={handleSubmit} id="create-bin-form">
-              <div className="form-floating mb-3">
-                  <input onChange={handleManufacturerChange} placeholder="Manufacturer" required type="text" name="manufacturer" id="manufacturer" className="form-control" value={manufacturer}/>
-                  <label htmlFor="model_name">Manufacturer</label>
+            <div className="offset-3 col-6">
+                <div className="shadow p-4 mt-4">
+                    <h1>Add a Model</h1>
+                    <form onSubmit={handleSend} id="create-bin-form">
+                        <div className="form-floating mb-3">
+                            <input onChange={handleModelNameChange} placeholder="Model Name" required type="text" name="model_name" id="model_name" className="form-control" value={modelName} />
+                            <label htmlFor="model_name">Model Name</label>
+                        </div>
+                        <div className="form-floating mb-3">
+                            <input onChange={handlePictureUrlChange} placeholder="Picture URL" required type="text" name="picture_url" id="picture_url" className="form-control" value={pictureUrl} />
+                            <label htmlFor="picture_url">Picture URL</label>
+                        </div>
+                        <div className="mb-3">
+                            <select onChange={handleManufacturerChange} required name="manufacturer" id="manufacturer_id" className="form-select" value={manufacturer_id}>
+                                <option value="">Select a Manufacturer</option>
+                                {manufacturers.map(manufacturer => {
+                                    return (
+                                        <option key={manufacturer.id} value={manufacturer.id}>
+                                            {manufacturer.name}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
+                        <button className="btn btn-primary">Add Model</button>
+                    </form>
                 </div>
-                <div className="form-floating mb-3">
-                  <input onChange={handleModelNameChange} placeholder="Model Name" required type="text" name="model_name" id="model_name" className="form-control" value={modelName}/>
-                  <label htmlFor="model_name">Model Name</label>
-                </div>
-                <div className="form-floating mb-3">
-                  <input onChange={handleColorChange} placeholder="Color" required type="text" name="color" id="color" className="form-control" value={color}/>
-                  <label htmlFor="color">Color</label>
-                </div>
-                <div className="form-floating mb-3">
-                  <input onChange={handlePictureUrlChange} placeholder="Picture URL" required type="text" name="picture_url" id="picture_url" className="form-control" value={pictureUrl}/>
-                  <label htmlFor="picture_url">Picture URL</label>
-                </div>
-                <div className="mb-3">
-                  <select onChange={handleBinChange} required name="bin" id="shoe_bin" className="form-select" value={shoe_bin}>
-                    <option value="">Choose a Bin</option>
-                    {manufacturers.map(bin => {
-                      return (
-                          <option key={bin.href} value={bin.href}>
-                              {bin.closet_name}
-                          </option>
-                      );
-                    })}
-                  </select>
-                </div>
-                <button className="btn btn-primary">Add!</button>
-              </form>
             </div>
-          </div>
         </div>
-      );
+    );
 
 }
 
