@@ -9,11 +9,9 @@ function AutomobileList() {
         const fetchData = async () => {
             const url = 'http://localhost:8100/api/automobiles/'
             const response = await fetch(url);
-            console.log(response);
             if (response.ok) {
                 const data = await response.json();
                 setAutomobiles(data.autos);
-                console.log(data.autos);
             }
         }
         fetchData();
