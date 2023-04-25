@@ -15,7 +15,7 @@ function App(props) {
           <Route path = "manuform">
             <Route path="new" element={<ManuForm />} />
           </Route>
-          {/* <Route path="listModels" element={<listModels />} /> */}
+          <Route path="list" element={<ManufacturersList />} />
           {/* <Route path="createModel" element={<createModel />} /> */}
           {/* <Route path="showInventory" element={<showInventory />} /> */}
           {/* <Route path="createCar" element={<createCar />} /> */}
