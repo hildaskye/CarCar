@@ -3,7 +3,7 @@
 Team:
 
 * Clarisse Alvarez - Automobile Service
-* Person 2 - Which microservice?
+* Dylan Winn - Automobile Sales
 
 ## Design
 
