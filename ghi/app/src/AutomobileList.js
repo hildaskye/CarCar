@@ -19,9 +19,6 @@ function AutomobileList() {
         fetchData();
     }, []);
 
-
-
-
     return (
         <div>
             <h1>Automobiles</h1>

@@ -5,6 +5,7 @@ import AutomobileList from './AutomobileList';
 import Nav from './Nav';
 import ManuForm from './ManuForm';
 import ModelForm from './ModelForm';
+import VehicleModelsList from './VehicleModels';
 
 function App(props) {
   return (
@@ -25,6 +26,9 @@ function App(props) {
               </Route>
             <Route path = "list">
               <Route path = "Automobiles" element={<AutomobileList />} />
+            </Route>
+            <Route path = "list">
+              <Route path = "Vehicles" element={<VehicleModelsList />} />
             </Route>
         </Routes>
       </div>
