@@ -11,19 +11,12 @@ function App(props) {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          {/* <Route path="Manufacturers" element={<Manufacturers />} /> */}
           <Route path = "new">
             <Route path="Manufacturer" element={<ManuForm />} />
           </Route>
           <Route path="list">
             <Route path = "Manufacturers" element={<ManufacturersList />} />
           </Route>
-          {/* <Route path="listModels" element={<listModels />} /> */}
-          {/* <Route path="ModelForm" element={<ModelForm />} /> */}
-
-          {/* <Route path="createModel" element={<createModel />} /> */}
-          {/* <Route path="showInventory" element={<showInventory />} /> */}
-          {/* <Route path="createCar" element={<createCar />} /> */}
         </Routes>
       </div>
     </BrowserRouter>
