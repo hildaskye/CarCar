@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import ManufacturersList from './ManufacturersList';
+import AutomobileList from './AutomobileList';
 import Nav from './Nav';
 import ManuForm from './ManuForm';
 import ModelForm from './ModelForm';
@@ -21,6 +22,12 @@ function App(props) {
           <Route path="list">
             <Route path="manufacturers" element={<ManufacturersList />} />
           </Route>
+            <Route path="list">
+            <Route path = "Manufacturers" element={<ManufacturersList />} />
+              </Route>
+            <Route path = "list">
+              <Route path = "Automobiles" element={<AutomobileList />} />
+            </Route>
         </Routes>
       </div>
     </BrowserRouter>
