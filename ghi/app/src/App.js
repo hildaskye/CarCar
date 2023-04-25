@@ -5,6 +5,7 @@ import AutomobileList from './AutomobileList';
 import Nav from './Nav';
 import ManuForm from './ManuForm';
 import ModelForm from './ModelForm';
+import CarForm from './CarForm';
 import VehicleModelsList from './VehicleModels';
 
 function App(props) {
@@ -17,6 +18,7 @@ function App(props) {
           <Route path="new">
             <Route path="manufacturer" element={<ManuForm />} />
             <Route path="model" element={<ModelForm />} />
+            <Route path="auto" element={<CarForm />} />
           </Route>
           <Route path="list">
             <Route path="manufacturers" element={<ManufacturersList />} />

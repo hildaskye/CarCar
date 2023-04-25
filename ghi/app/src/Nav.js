@@ -20,6 +20,9 @@ function Nav() {
               <NavLink className="nav-link" aria-current="page" to="new/model">Create Model</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link" aria-current="page" to="new/auto">Create Auto</NavLink>
+            </li>
+            <li className="nav-item">
               <NavLink className="nav-link" aria-current="page" to="list/manufacturers"> Manufacturers List</NavLink>
             </li>
             <li className="nav-item">
