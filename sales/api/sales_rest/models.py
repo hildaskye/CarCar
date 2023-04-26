@@ -20,7 +20,7 @@ class AutomobileVO(models.Model):
 
 
 class Sale(models.Model):
-    price = models.IntegerField(max_length=7)
+    price = models.IntegerField()
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name="sale",
