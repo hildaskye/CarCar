@@ -16,7 +16,10 @@ class Customer(models.Model):
 
 
 class AutomobileVO(models.Model):
-    vin = models.CharField(max_length=17)
+    vin = models.CharField(max_length=17, unique=True)
+
+    def __str__(self):
+        return f"{self.vin}"
 
 
 class Sale(models.Model):
