@@ -19,10 +19,10 @@ class AutomobileVO(models.Model):
 
 
 class Appointment(models.Model):
-    date_time = models.DateTimeField(auto_now_add=True)
+    date_time = models.DateTimeField()
     reason = models.TextField()
-    status = models.CharField(max_length=100)
-    vin = models.CharField(max_length=17, unique=True)
+    status = models.CharField(max_length=10)
+    vin = models.ForeignKey(AutomobileVO, on_delete=models.CASCADE)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(
         Technician,

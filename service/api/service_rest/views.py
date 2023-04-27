@@ -63,19 +63,19 @@ def api_appointments(request):
     else:
         try:
             content = json.loads(request.body)
-            appointment = Appointment.objects.all()
-            content["appointment"] = appointment
+            appointment = Appointment.objects.create(**content)
             return JsonResponse(
                 appointment,
                 encoder=AppointmentEncoder,
                 safe=False,
-        )
+            )
         except:
             response = JsonResponse(
                 {"message": "Could not create appointment"}
             )
             response.status_code = 400
             return response
+
 
 @require_http_methods(["DELETE"])
 def api_appointment(request, pk):
