@@ -122,3 +122,28 @@ def api_finish_appointment(request, pk):
             )
         except Appointment.DoesNotExist:
             return JsonResponse({"message": "Does not exist"})
+
+
+@require_http_methods(["GET", "POST"])
+def api_automobile_vo(request):
+    if request.method == "GET":
+        automobile_vos = AutomobileVO.objects.all()
+        return JsonResponse(
+            {"automobile_vos": automobile_vos},
+            encoder=AutomobileVOEncoder,
+        )
+    else:
+        try:
+            content = json.loads(request.body)
+            automobile_vo = AutomobileVO.objects.create(**content)
+            return JsonResponse(
+                automobile_vo,
+                encoder=AutomobileVOEncoder,
+                safe=False,
+            )
+        except:
+            response = JsonResponse(
+                {"message": "Does not exist"}
+            )
+            response.status_code = 400
+            return response

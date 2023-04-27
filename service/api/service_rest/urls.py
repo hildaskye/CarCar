@@ -20,4 +20,7 @@ urlpatterns = [
         "appointments/",
         api_appointments,
         name="api_appointments"),
+    # path(
+    #     "appointment/",
+    #     name="api_appointment")
 ]
