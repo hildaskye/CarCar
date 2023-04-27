@@ -7,6 +7,7 @@ import ManuForm from './ManuForm';
 import ModelForm from './ModelForm';
 import CarForm from './CarForm';
 import VehicleModelsList from './VehicleModels';
+import TechnicianList from './TechnicianList'
 
 function App(props) {
   return (
@@ -31,6 +32,9 @@ function App(props) {
             </Route>
             <Route path = "list">
               <Route path = "Vehicles" element={<VehicleModelsList />} />
+            </Route>
+            <Route path = "list">
+              <Route path = "Technicians" element={<TechnicianList />} />
             </Route>
         </Routes>
       </div>
