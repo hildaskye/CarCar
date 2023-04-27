@@ -5,7 +5,8 @@ from .views import (
     api_fire_salesperson,
     api_list_customers,
     api_delete_customer,
-    api_make_sale
+    api_make_sale,
+    api_delete_sale
 )
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
     path("salespeople/<int:pk>/", api_fire_salesperson, name="api_fire_salesperson"),
     path("customers/", api_list_customers, name="api_list_customers"),
     path("customers/<int:pk>/", api_delete_customer, name="api_delete_customer"),
-    path("sales/", api_make_sale, name="api_make_sale")
+    path("sales/", api_make_sale, name="api_make_sale"),
+    path("sales/<int:id>/", api_delete_sale, name="api_delete_sale"),
 ]

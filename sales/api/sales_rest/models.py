@@ -38,7 +38,8 @@ class Sale(models.Model):
     salesperson = models.ForeignKey(
         Salesperson,
         related_name="sale",
-        on_delete=models.CASCADE
+        on_delete=models.SET_NULL,
+        null=True
     )
     customer = models.ForeignKey(
         Customer,
