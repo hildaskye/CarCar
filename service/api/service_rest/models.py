@@ -5,10 +5,10 @@ from django.urls import reverse
 class Technician(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    employee_id = models.PositiveSmallIntegerField()
+    employee_id = models.IntegerField()
 
     def get_api_url(self):
-        return reverse("api_tchnicians", kwargs={"pk": self.id})
+        return reverse("api_technicians", kwargs={"pk": self.id})
 
 
 class AutomobileVO(models.Model):
@@ -19,10 +19,10 @@ class AutomobileVO(models.Model):
 
 
 class Appointment(models.Model):
-    date_time = models.DateTimeField(auto_now_add=True)
+    date_time = models.DateTimeField()
     reason = models.TextField()
-    status = models.CharField(max_length=100)
-    vin = models.CharField(max_length=17, unique=True)
+    status = models.CharField(max_length=10)
+    vin = models.ForeignKey(AutomobileVO, on_delete=models.CASCADE)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(
         Technician,
