@@ -6,7 +6,7 @@ import json
 from .encoders import (
     SalespersonEncoder,
     CustomerEncoder,
-    AutomonileVOEncoder,
+    AutomobileVOEncoder,
     SaleEncoder,
 )
 
@@ -51,6 +51,7 @@ def api_list_salespeople(request):
             response.status_code = 400
             return response
 
+
 @require_http_methods(["DELETE"])
 def api_fire_salesperson(request, pk):
     try:
@@ -63,3 +64,82 @@ def api_fire_salesperson(request, pk):
         )
     except Salesperson.DoesNotExist:
         return JsonResponse({"message": "Salesperson not found. You sure you didn't already fire/delete them?"})
+
+
+@require_http_methods(["GET", "POST"])
+def api_list_customers(request):
+    if request.method == "POST":
+        try:
+            content = json.loads(request.body)
+            customer = Customer.objects.create(**content)
+            return JsonResponse(
+                customer,
+                encoder=CustomerEncoder,
+                safe=False,
+            )
+        except:
+            response = JsonResponse(
+                {"message": "Couldn't create a customer"}
+            )
+            response.status_code = 400
+            return response
+    else:
+        try:
+            customers = Customer.objects.all()
+            return JsonResponse(
+                {"customers": customers},
+                encoder=CustomerEncoder,
+            )
+        except:
+            response = JsonResponse(
+                {"message": "Couldn't retrieve the customers"}
+            )
+            response.status_code = 400
+            return response
+
+
+@require_http_methods(["DELETE"])
+def api_delete_customer(request, pk):
+    try:
+        customer = Customer.objects.get(id=pk)
+        customer.delete()
+        return JsonResponse(
+            customer,
+            encoder=CustomerEncoder,
+            safe=False,
+        )
+    except Customer.DoesNotExist:
+        return JsonResponse({"message": "Customer? What customer?"})
+
+
+@require_http_methods("POST")
+def api_make_sale(request):
+    content = json.loads(request.body)
+    print(content)
+    try:
+        href = content["href"]
+        auto = AutomobileVO.objects.get(import_href=href)
+        content["href"] = auto
+    except AutomobileVO.DoesNotExist:
+        return JsonResponse({"message": "Invalid Auto"})
+
+    try:
+        salesperson_id = content["salesperson"]
+        salesperson = Salesperson.objects.get(id=salesperson_id)
+        content["salesperson"] = salesperson
+    except Salesperson.DoesNotExist:
+        return JsonResponse({"message": "Invalid Salesperson"})
+
+    try:
+        customer_id = content["customer"]
+        customer = Customer.objects.get(id=customer_id)
+        content["customer"] = customer
+    except Customer.DoesNotExist:
+        return JsonResponse({"message": "Invalid Customer"})
+
+    sale = Sale.objects.create(**content)
+    return JsonResponse(
+        sale,
+        encoder=SaleEncoder,
+        safe=False
+    )

@@ -19,21 +19,29 @@ class CustomerEncoder(ModelEncoder):
         "last_name",
         "address",
         "phone_number",
+        "id",
     ]
 
 
-class AutomonileVOEncoder(ModelEncoder):
+class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
-        "vin"
+        "vin",
+        "href",
     ]
 
 
 class SaleEncoder(ModelEncoder):
     model = Sale
-    peoperties = [
+    properties = [
         "price",
         "automobile",
         "salesperson",
         "customer",
+        "id",
     ]
+    encoders = {
+        "automobile": AutomobileVOEncoder(),
+        "salesperson": SalespersonEncoder(),
+        "customer": CustomerEncoder()
+    }
