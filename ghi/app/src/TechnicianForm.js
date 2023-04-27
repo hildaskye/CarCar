@@ -11,7 +11,7 @@ function TechnicianForm(props) {
 
     const fetchData = async () => {
         const url = 'http://localhost8080/api/appointments/';
-        
+
     }
 
 }
