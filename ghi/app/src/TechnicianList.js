@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 
 function TechnicianList() {
-
     const [technicians, setTechnicians] = useState([]);
 
     useEffect(() => {
