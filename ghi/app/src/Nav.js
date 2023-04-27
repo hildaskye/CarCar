@@ -35,6 +35,9 @@ function Nav() {
                 <li>
                   <Link className="dropdown-item" to="/list/salespeople/">Salespeople</Link>
                 </li>
+                <li>
+                  <Link className="dropdown-item" to="/list/customers/">Customers</Link>
+                </li>
               </ul>
             </li>
             <li className="nav-item dropdown">
@@ -54,6 +57,9 @@ function Nav() {
                 <li><hr className="dropdown-divider"/></li>
                 <li>
                   <Link className="dropdown-item" to="/new/salesperson/">Salesperson</Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/new/customer/">Customer</Link>
                 </li>
               </ul>
             </li>
