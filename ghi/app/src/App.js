@@ -46,6 +46,9 @@ function App(props) {
             <Route path = "list">
               <Route path = "Technicians" element={<TechnicianList />} />
             </Route>
+            <Route path = "list">
+              <Route path = "Appointments" element={<AppointmentList />} />
+            </Route>
         </Routes>
       </div>
     </BrowserRouter>
