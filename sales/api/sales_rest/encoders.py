@@ -27,7 +27,6 @@ class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
         "vin",
-        "href",
     ]
 
 
@@ -38,7 +37,6 @@ class SaleEncoder(ModelEncoder):
         "automobile",
         "salesperson",
         "customer",
-        "id",
     ]
     encoders = {
         "automobile": AutomobileVOEncoder(),

@@ -117,9 +117,9 @@ def api_make_sale(request):
     content = json.loads(request.body)
     print(content)
     try:
-        href = content["href"]
-        auto = AutomobileVO.objects.get(import_href=href)
-        content["href"] = auto
+        auto_vin = content["automobile"]
+        auto = AutomobileVO.objects.get(vin=auto_vin)
+        content["automobile"] = auto
     except AutomobileVO.DoesNotExist:
         return JsonResponse({"message": "Invalid Auto"})
 
