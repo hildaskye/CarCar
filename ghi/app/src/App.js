@@ -13,8 +13,10 @@ import SalespersonForm from './SalespersonForm';
 import CustomerList from './CustomerList';
 import CustomerForm from './CustomerForm';
 import SaleForm from './SaleForm';
-import SaleList from './SaleList';
+
+
 import AppointmentList from './AppointmentList';
+import TechnicianForm from './TechnicianForm';
 
 
 
@@ -30,6 +32,7 @@ function App(props) {
             <Route path="model" element={<ModelForm />} />
             <Route path="auto" element={<CarForm />} />
             <Route path="salesperson" element={<SalespersonForm />} />
+            <Route path="technician" element={<TechnicianForm />} />
             <Route path="customer" element={<CustomerForm />}/>
             <Route path="sale" element={<SaleForm />}/>
           </Route>
@@ -41,6 +44,8 @@ function App(props) {
             <Route path = "salespeople" element={<SalespersonList />} />
             <Route path = "customers" element={<CustomerList />} />
             <Route path = "sales" element={<SaleList />} />
+            <Route path = "sales" element={<CustomerList />} />
+            <Route path = "appointments" element={<AppointmentList />} />
           </Route>
         </Routes>
       </div>
