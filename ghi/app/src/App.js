@@ -13,9 +13,10 @@ import SalespersonForm from './SalespersonForm';
 import CustomerList from './CustomerList';
 import CustomerForm from './CustomerForm';
 import SaleForm from './SaleForm';
-
-
+import SaleList from './SaleList';
 import AppointmentList from './AppointmentList';
+
+
 
 function App(props) {
   return (
@@ -39,7 +40,7 @@ function App(props) {
             <Route path = "technicians" element={<TechnicianList />} />
             <Route path = "salespeople" element={<SalespersonList />} />
             <Route path = "customers" element={<CustomerList />} />
-            <Route path = "sales" element={<CustomerList />} />
+            <Route path = "sales" element={<SaleList />} />
           </Route>
         </Routes>
       </div>

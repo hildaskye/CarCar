@@ -22,7 +22,7 @@ class Customer(models.Model):
 
 
 class AutomobileVO(models.Model):
-    vin = models.CharField(max_length=17, unique=True)
+    vin = models.CharField(max_length=17)
     sold = models.BooleanField(default=False)
 
     def __str__(self):
@@ -33,18 +33,18 @@ class Sale(models.Model):
     price = models.IntegerField()
     automobile = models.ForeignKey(
         AutomobileVO,
-        related_name="sale",
+        related_name="auto",
         on_delete=models.CASCADE
     )
     salesperson = models.ForeignKey(
         Salesperson,
-        related_name="sale",
+        related_name="seller",
         on_delete=models.SET_NULL,
         null=True
     )
     customer = models.ForeignKey(
         Customer,
-        related_name="sale",
+        related_name="customer",
         on_delete=models.CASCADE
     )
 
