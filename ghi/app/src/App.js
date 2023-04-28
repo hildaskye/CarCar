@@ -13,6 +13,7 @@ import SalespersonForm from './SalespersonForm';
 import CustomerList from './CustomerList';
 import CustomerForm from './CustomerForm';
 import SaleForm from './SaleForm';
+import SaleList from './SaleList';
 
 
 import AppointmentList from './AppointmentList';

@@ -150,10 +150,7 @@ def api_make_sale(request):
             return JsonResponse({"message": "Invalid Auto"})
 
         sale = Sale.objects.create(**content)
-        requests.put(f"http://inventory-api:8000/api/automobiles/{auto_vin}/", {"sold": "True"})
-
-
-
+        requests.put(f"http://inventory-api:8000/api/automobiles/{auto_vin}/", data=json.dumps({"sold": "True"}))
 
         return JsonResponse(
             sale,
