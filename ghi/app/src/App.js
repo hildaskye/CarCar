@@ -12,6 +12,7 @@ import SalespersonList from './SalespersonList';
 import SalespersonForm from './SalespersonForm';
 import CustomerList from './CustomerList';
 import CustomerForm from './CustomerForm';
+import SaleForm from './SaleForm';
 
 
 import AppointmentList from './AppointmentList';
@@ -29,6 +30,7 @@ function App(props) {
             <Route path="auto" element={<CarForm />} />
             <Route path="salesperson" element={<SalespersonForm />} />
             <Route path="customer" element={<CustomerForm />}/>
+            <Route path="sale" element={<SaleForm />}/>
           </Route>
           <Route path="list">
             <Route path="manufacturers" element={<ManufacturersList />} />
@@ -37,22 +39,8 @@ function App(props) {
             <Route path = "technicians" element={<TechnicianList />} />
             <Route path = "salespeople" element={<SalespersonList />} />
             <Route path = "customers" element={<CustomerList />} />
+            <Route path = "sales" element={<CustomerList />} />
           </Route>
-            <Route path="list">
-            <Route path = "Manufacturers" element={<ManufacturersList />} />
-              </Route>
-            <Route path = "list">
-              <Route path = "Automobiles" element={<AutomobileList />} />
-            </Route>
-            <Route path = "list">
-              <Route path = "Vehicles" element={<VehicleModelsList />} />
-            </Route>
-            <Route path = "list">
-              <Route path = "Technicians" element={<TechnicianList />} />
-            </Route>
-            <Route path = "list">
-              <Route path = "Appointments" element={<AppointmentList />} />
-            </Route>
         </Routes>
       </div>
     </BrowserRouter>
