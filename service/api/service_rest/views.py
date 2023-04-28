@@ -63,6 +63,12 @@ def api_appointments(request):
     else:
         try:
             content = json.loads(request.body)
+            auto_vin = content("vin")
+            auto = AutomobileVO.objects.get(vin=auto_vin)
+            content["vin"] = auto
+            technician_id = content["technician"]
+            technician = Technician.objects.get(id=technician_id)
+            content["technician"] = technician
             appointment = Appointment.objects.create(**content)
             return JsonResponse(
                 appointment,
