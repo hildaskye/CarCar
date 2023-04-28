@@ -70,6 +70,10 @@ function Nav() {
                 <li>
                   <Link className="dropdown-item" to="/new/sale/">Sale</Link>
                 </li>
+                <li><hr className="dropdown-divider"/></li>
+                <li>
+                  <Link className="dropdown-item" to="/new/technician/">Technician</Link>
+                </li>
               </ul>
             </li>
           </ul>
