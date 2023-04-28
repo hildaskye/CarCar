@@ -4,6 +4,7 @@ from .views import (
     api_technicians,
     api_technician,
     api_appointments,
+    # api_appointment,
 
 )
 
@@ -21,6 +22,6 @@ urlpatterns = [
         api_appointments,
         name="api_appointments"),
     # path(
-    #     "appointment/",
+    #     "appointments/<int:pk>/",
     #     name="api_appointment")
 ]
