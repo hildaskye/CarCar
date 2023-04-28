@@ -22,12 +22,12 @@ function AppointmentList() {
             <table className="table table-striped">
                 <thead>
                     <tr>
-                        <th>Date & Time</th>
-                        <th>Reason</th>
-                        <th>VIN</th>
-                        <th>Customer</th>
-                        <th>Technician</th>
-                        <th>Status</th>
+                            <th>Date & Time</th>
+                            <th>Reason</th>
+                            <th>VIN</th>
+                            <th>Customer</th>
+                            <th>Technician</th>
+                            <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +36,7 @@ function AppointmentList() {
                             <tr key={appointment.id}>
                                 <td>{ appointment.date_time }</td>
                                 <td>{ appointment.reason }</td>
-                                <td>{ appointment.vin }</td>
+                                <td>{ appointment.auto.vin }</td>
                                 <td>{ appointment.customer }</td>
                                 <td>{ appointment.technician }</td>
                                 <td>{ appointment.status }</td>
