@@ -65,7 +65,6 @@ function Nav() {
                   <Link className="dropdown-item" to="/new/salesperson/">Salesperson</Link>
                 </li>
                 <li>
-                  <Link className="dropdown-item" to="/new/technician/">Technician</Link>
                   <Link className="dropdown-item" to="/new/customer/">Customer</Link>
                 </li>
                 <li>
