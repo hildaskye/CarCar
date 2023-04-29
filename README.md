@@ -7,7 +7,6 @@ Team:
 
 ## Design
 
-<<<<<<< HEAD
 To get started, you will need Docker already installed. Clone the project and run the following commands:
 
 >docker volume create beta-data
@@ -18,8 +17,6 @@ You may see a warning about an environment variable "OS" being missing if runnin
 
 (Diagram here)
 
-=======
->>>>>>> 1ea82567d97dd983eeda11b06b9fb23ede29599d
 This project includes multiple docker containers running simultaneously together, and building off eachother, to create a fully-functioning application. They are as follows:
 database-1 is as it sounds, it runs the actual database everything gets data from.
 react-1 runs the Graphical User Interface (GUI) and is where all the front-end information can be accessed.
@@ -100,6 +97,12 @@ service-api-1 which runs the service API on port 8080 and service-poller-1 which
 Technicians:
 
 Create or List Technicians at http://localhost:8080/api/technicians/ using POST and GET API endpoints. Delete a specific Technician at http://localhost:8080/api/technicians/id/ replacing the id with the specific technician id using DELETE API endpoint. The GET and DELETE endpoints do not require a body however the POST request does require a JSON body.
+The Service microservice docker containers are:
+service-api-1 which runs the service API on port 8080 and service-poller-1 which runs a poller for the service API. This updates once per minute and allows service information to stay updated across all services.
+
+Technicians:
+
+Create or List Technicians at http://localhost:8080/api/technicians/ using POST and GET API endpoints. Delete a specific Technician at http://localhost:8080/api/technicians/id/ replacing the id with the specific technician id using DELETE API endpoint. The GET and DELETE endpoints do not require a body however the POST request does require a JSON body.
 
 
 The first step is to create a Technician. After creating a new HTTP request, choose the POST option from the dropdown, enter the following url: http://localhost:8080/api/technicians/ in the url field, select JSON from the body dropdown field and enter the JSON body below into the empty field. Send the request using the SEND button next to the URL field and the new technician will be created.
@@ -130,7 +133,36 @@ The following is an example of the JSON body to be included with a POST request:
 	"customer": "Bill Jones",
 	"technician": "8"
 }
+The first step is to create a Technician. After creating a new HTTP request, choose the POST option from the dropdown, enter the following url: http://localhost:8080/api/technicians/ in the url field, select JSON from the body dropdown field and enter the JSON body below into the empty field. Send the request using the SEND button next to the URL field and the new technician will be created.
 
+The following is an example of the JSON body to be included with a POST request:
+{
+	"first_name": "Bob",
+	"last_name": "Smith",
+	"employee_id": "1011"
+}
+
+After creating a technician, there will be data to produce when listing technicians. The GET request does not require a body. Create a new HTTP request and choose GET from the dropdown options. Enter http://localhost:8080/api/technicians/ in the URL field and hit SEND. A list of technicians will populate in the Preview Field.
+
+To delete a Technician create a new HTTP request and choose DELETE from the dropdown. Enter http://localhost:8080/api/technicians/id in the URL field. Replace the id at the end of the URL with the technician id whom you wish to delete.
+
+Appointments:
+
+Create or List Appointments at http://localhost:8080/appointments/ using POST and GET API endpoints. Delete a specific appointment at http://localhost:8080/api/appointments/id/ replacing the id with the specific appointment id using the DELETE API endpoint. The GET and DELETE endpoints do not require a body however the POST request deos require a JSON body.
+
+The first step is to create an Appointment. After creating a new HTTP request, choose the POST option from the dropdown, enter the following url: http://localhost:8080/appointments/ and enter the JSON body below into the empty field. Send the request using the SEND button next to the URL field and the new appointment will be created.
+
+The following is an example of the JSON body to be included with a POST request:
+{
+	"date_time": "2023-04-28T01:35:41+00:00",
+	"reason": "broken door latch",
+	"status": "Pending",
+	"vin": "1NNNN777888886",
+	"customer": "Bill Jones",
+	"technician": "8"
+}
+
+After creating an appointment, there will be data to produce when listing appointments. The GET request does not require a body. Create a new HTTP request and choose GET from the dropdown options. Enter http://localhost:8080/api/appointments/ in the URL field and hit SEND. A list of appointments will populate in the Preview Field.
 After creating an appointment, there will be data to produce when listing appointments. The GET request does not require a body. Create a new HTTP request and choose GET from the dropdown options. Enter http://localhost:8080/api/appointments/ in the URL field and hit SEND. A list of appointments will populate in the Preview Field.
 
 To delete an Appointment create a new HTTP request and choose DELETE from the dropdown. Enter http://localhost:8080/api/appointments/id in the URL field. Replace the id at the end of the URL with the appointment id of the appointment you wish to delete.
