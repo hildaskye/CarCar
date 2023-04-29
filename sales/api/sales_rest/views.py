@@ -150,7 +150,11 @@ def api_make_sale(request):
             return JsonResponse({"message": "Invalid Auto"})
 
         sale = Sale.objects.create(**content)
-        requests.put(f"http://inventory-api:8000/api/automobiles/{auto_vin}/", data=json.dumps({"sold": "True"}))
+        requests.put(
+            f"http://inventory-api:8000/api/automobiles/{auto_vin}/",
+            data=json.dumps(
+            {"sold": "True"}
+            ))
 
         return JsonResponse(
             sale,
@@ -177,3 +181,15 @@ def api_delete_sale(request, id):
         )
     except Sale.DoesNotExist:
         return JsonResponse({"message": "Sale's either gone or was never here, sis."})
+
+
+def api_filter_by_salesperson(request, pk):
+    sp = Salesperson.objects.get(id=pk)
+    print(sp)
+    sales = Sale.objects.filter(salesperson=sp)
+    print(sales)
+
+    return JsonResponse(
+        {"sales": sales},
+        encoder=SaleEncoder
+    )

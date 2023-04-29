@@ -22,7 +22,6 @@ function SaleForm() {
         data.automobile = auto;
         data.salesperson = salesperson;
         data.customer = customer;
-        console.log(data)
 
         const SaleUrl = "http://localhost:8090/api/sales/";
         const fetchConfig = {
