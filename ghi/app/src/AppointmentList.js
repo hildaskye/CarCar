@@ -40,6 +40,8 @@ function AppointmentList() {
                                 <td>{ appointment.customer }</td>
                                 {/* <td>{ appointment.model.technician }</td> */}
                                 <td>{ appointment.status }</td>
+                                <button className="btn btn-primary">Cancel</button>
+                                <button className="btn btn-primary">Finish</button>
                             </tr>
                         )
                     })}
