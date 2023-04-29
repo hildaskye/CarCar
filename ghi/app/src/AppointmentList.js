@@ -26,8 +26,8 @@ function AppointmentList() {
                             <th>Reason</th>
                             {/* <th>VIN</th> */}
                             <th>Customer</th>
-                            <th>Technician</th>
-                            {/* <th>Status</th> */}
+                            {/* <th>Technician</th> */}
+                            <th>Status</th>
                     </tr>
                 </thead>
                 <tbody>
