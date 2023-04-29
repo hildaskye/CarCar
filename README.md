@@ -7,6 +7,7 @@ Team:
 
 ## Design
 
+<<<<<<< HEAD
 To get started, you will need Docker already installed. Clone the project and run the following commands:
 
 >docker volume create beta-data
@@ -17,6 +18,8 @@ You may see a warning about an environment variable "OS" being missing if runnin
 
 (Diagram here)
 
+=======
+>>>>>>> 1ea82567d97dd983eeda11b06b9fb23ede29599d
 This project includes multiple docker containers running simultaneously together, and building off eachother, to create a fully-functioning application. They are as follows:
 database-1 is as it sounds, it runs the actual database everything gets data from.
 react-1 runs the Graphical User Interface (GUI) and is where all the front-end information can be accessed.
