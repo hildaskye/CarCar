@@ -6,6 +6,7 @@ from .views import (
     api_appointments,
     api_appointment,
 
+
 )
 
 urlpatterns = [
@@ -24,5 +25,5 @@ urlpatterns = [
     path(
         "appointments/<int:pk>/",
         api_appointment,
-        name="api_appointment")
+        name="api_appointment"),
 ]

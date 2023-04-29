@@ -15,7 +15,6 @@ function ServiceHistoryList() {
         fetchData();
     }, []);
 
-
     return (
         <div>
             <h1>Service History</h1>
