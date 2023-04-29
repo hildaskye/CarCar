@@ -24,9 +24,9 @@ function AppointmentList() {
                     <tr>
                             <th>Date & Time</th>
                             <th>Reason</th>
-                            <th>VIN</th>
+                            {/* <th>VIN</th> */}
                             <th>Customer</th>
-                            <th>Technician</th>
+                            {/* <th>Technician</th> */}
                             <th>Status</th>
                     </tr>
                 </thead>
@@ -36,9 +36,9 @@ function AppointmentList() {
                             <tr key={appointment.id}>
                                 <td>{ appointment.date_time }</td>
                                 <td>{ appointment.reason }</td>
-                                <td>{ appointment.auto.vin }</td>
+                                {/* <td>{ appointment.model.vin }</td> */}
                                 <td>{ appointment.customer }</td>
-                                <td>{ appointment.technician }</td>
+                                {/* <td>{ appointment.model.technician }</td> */}
                                 <td>{ appointment.status }</td>
                             </tr>
                         )

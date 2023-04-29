@@ -29,6 +29,7 @@ class AppointmentEncoder(ModelEncoder):
         "vin",
         "customer",
         "technician",
+        "id",
     ]
     encoders = {
         "technician": TechnicianEncoder(),

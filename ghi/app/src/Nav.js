@@ -34,6 +34,9 @@ function Nav() {
                 <li>
                   <Link className="dropdown-item" to="/list/appointments/">Appointments</Link>
                 </li>
+                <li>
+                  <Link className="dropdown-item" to="/list/services/">Service History</Link>
+                </li>
                 <li><hr className="dropdown-divider"/></li>
                 <li>
                   <Link className="dropdown-item" to="/list/salespeople/">Salespeople</Link>
@@ -72,6 +75,13 @@ function Nav() {
                 </li>
                 <li>
                   <Link className="dropdown-item" to="/new/sale/">Sale</Link>
+                </li>
+                <li><hr className="dropdown-divider"/></li>
+                <li>
+                  <Link className="dropdown-item" to="/new/technician/">Technician</Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/new/appointment/">Appointment</Link>
                 </li>
               </ul>
             </li>

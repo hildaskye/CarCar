@@ -91,43 +91,47 @@ Edit, Delete, or View individual automobiles at http://localhost:8100/api/automo
 
 
 ## Service microservice
+The Service microservice docker containers are:
+service-api-1 which runs the service API on port 8080 and service-poller-1 which runs a poller for the service API. This updates once per minute and allows service information to stay updated across all services.
+
+Technicians:
+
+Create or List Technicians at http://localhost:8080/api/technicians/ using POST and GET API endpoints. Delete a specific Technician at http://localhost:8080/api/technicians/id/ replacing the id with the specific technician id using DELETE API endpoint. The GET and DELETE endpoints do not require a body however the POST request does require a JSON body.
 
 
+The first step is to create a Technician. After creating a new HTTP request, choose the POST option from the dropdown, enter the following url: http://localhost:8080/api/technicians/ in the url field, select JSON from the body dropdown field and enter the JSON body below into the empty field. Send the request using the SEND button next to the URL field and the new technician will be created.
 
+The following is an example of the JSON body to be included with a POST request:
+{
+	"first_name": "Bob",
+	"last_name": "Smith",
+	"employee_id": "1011"
+}
 
-Explain your models and integration with the inventory
-microservice, here.
- Your README should contain instructions for how to run your application. This should
- include at minimum the commands to bring up your containers (ie. docker-compose up)
- and any other steps that need to be taken for proctors to grade your projects
- Fork the project from the repository, and run the following commands
-    Run docker-compose up to bring up the containers using Docker. Navigate to localhost:3000 in the browser.
+After creating a technician, there will be data to produce when listing technicians. The GET request does not require a body. Create a new HTTP request and choose GET from the dropdown options. Enter http://localhost:8080/api/technicians/ in the URL field and hit SEND. A list of technicians will populate in the Preview Field.
 
+To delete a Technician create a new HTTP request and choose DELETE from the dropdown. Enter http://localhost:8080/api/technicians/id in the URL field. Replace the id at the end of the URL with the technician id whom you wish to delete.
 
- Your README should also include the following:
- ○   A Simple Diagram of the Architecture
+Appointments:
 
- ■   What’s running where?
- ■   Indicate what the bounded contexts and value objects are
- ○   Explicitly define the urls and ports for each of the microservices
- ○   A list of the CRUD routes for each of your resources
- ■   Think of this as the instructions for someone new to your project to gather
- an understanding of how to interact with your resources.
- ■   Provide specific URLS that can be added to insomnia once the
- application is running locally.
- ■   Provide sample POST data
- ■   Provide expected response data for each route.
- ■   all models are named and described  (this could be a use case, list of
- fields, some communication of why it exists)
- ○   Identify the value objects as well as:
- ■   Why they are needed.
- ■   How they are implemented because of why they’re needed.
- ●   What does all of this about the README mean?
- ○   Spend some time on your README
- ○   It’s not the notes for your project
- ■   Don’t leave git merge notes
- ■   Or what you did on a specific commit, that’s what git is for
- ■   Don’t leave instructions you followed in the README.
+Create or List Appointments at http://localhost:8080/appointments/ using POST and GET API endpoints. Delete a specific appointment at http://localhost:8080/api/appointments/id/ replacing the id with the specific appointment id using the DELETE API endpoint. The GET and DELETE endpoints do not require a body however the POST request deos require a JSON body.
+
+The first step is to create an Appointment. After creating a new HTTP request, choose the POST option from the dropdown, enter the following url: http://localhost:8080/appointments/ and enter the JSON body below into the empty field. Send the request using the SEND button next to the URL field and the new appointment will be created.
+
+The following is an example of the JSON body to be included with a POST request:
+{
+	"date_time": "2023-04-28T01:35:41+00:00",
+	"reason": "broken door latch",
+	"status": "Pending",
+	"vin": "1NNNN777888886",
+	"customer": "Bill Jones",
+	"technician": "8"
+}
+
+After creating an appointment, there will be data to produce when listing appointments. The GET request does not require a body. Create a new HTTP request and choose GET from the dropdown options. Enter http://localhost:8080/api/appointments/ in the URL field and hit SEND. A list of appointments will populate in the Preview Field.
+
+To delete an Appointment create a new HTTP request and choose DELETE from the dropdown. Enter http://localhost:8080/api/appointments/id in the URL field. Replace the id at the end of the URL with the appointment id of the appointment you wish to delete.
+
 
 ## Sales microservice
 
