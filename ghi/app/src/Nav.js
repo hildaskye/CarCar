@@ -47,6 +47,9 @@ function Nav() {
                 <li>
                   <Link className="dropdown-item" to="/list/sales/">Sales</Link>
                 </li>
+                <li>
+                  <Link className="dropdown-item" to="/list/salesbysalesperson/">Sales By Salesperson</Link>
+                </li>
               </ul>
             </li>
             <li className="nav-item dropdown">

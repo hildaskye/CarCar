@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
+import requests
 
 from .encoders import (
     SalespersonEncoder,
@@ -19,6 +20,15 @@ from .models import (
 
 
 # Create your views here.
+
+@require_http_methods("GET")
+def api_list_automobileVOs(request):
+    autoVOs = AutomobileVO.objects.all()
+    return JsonResponse(
+        {"autoVOs": autoVOs},
+        encoder=AutomobileVOEncoder,
+    )
+
 
 @require_http_methods(["GET", "POST"])
 def api_list_salespeople(request):
@@ -117,13 +127,6 @@ def api_make_sale(request):
     if request.method == "POST":
         content = json.loads(request.body)
         try:
-            auto_vin = content["automobile"]
-            auto = AutomobileVO.objects.get(vin=auto_vin)
-            content["automobile"] = auto
-        except AutomobileVO.DoesNotExist:
-            return JsonResponse({"message": "Invalid Auto"})
-
-        try:
             salesperson_id = content["salesperson"]
             salesperson = Salesperson.objects.get(id=salesperson_id)
             content["salesperson"] = salesperson
@@ -137,7 +140,22 @@ def api_make_sale(request):
         except Customer.DoesNotExist:
             return JsonResponse({"message": "Invalid Customer"})
 
+        try:
+            auto_vin = content["automobile"]
+            auto = AutomobileVO.objects.get(vin=auto_vin)
+            setattr(auto, "sold", True)
+            auto.save()
+            content["automobile"] = auto
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse({"message": "Invalid Auto"})
+
         sale = Sale.objects.create(**content)
+        requests.put(
+            f"http://inventory-api:8000/api/automobiles/{auto_vin}/",
+            data=json.dumps(
+            {"sold": "True"}
+            ))
+
         return JsonResponse(
             sale,
             encoder=SaleEncoder,
@@ -163,3 +181,15 @@ def api_delete_sale(request, id):
         )
     except Sale.DoesNotExist:
         return JsonResponse({"message": "Sale's either gone or was never here, sis."})
+
+
+def api_filter_by_salesperson(request, pk):
+    sp = Salesperson.objects.get(id=pk)
+    print(sp)
+    sales = Sale.objects.filter(salesperson=sp)
+    print(sales)
+
+    return JsonResponse(
+        {"sales": sales},
+        encoder=SaleEncoder
+    )
