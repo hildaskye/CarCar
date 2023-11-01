@@ -29,6 +29,7 @@ function AutomobileList() {
                         <th>Model</th>
                         <th>Manufacturer</th>
                         <th>Sold</th>
+
                     </tr>
                 </thead>
                 <tbody>
